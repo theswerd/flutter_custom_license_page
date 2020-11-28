@@ -32,10 +32,9 @@ class _CustomLicensePageState extends State<CustomLicensePage> {
 
   @override
   Widget build(BuildContext context) {
-    return  FutureBuilder<LicenseData>(
-        future: licenses,
-        builder: widget.builder,
-      
+    return FutureBuilder<LicenseData>(
+      future: licenses,
+      builder: widget.builder,
     );
   }
 
