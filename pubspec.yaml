@@ -1,6 +1,6 @@
 name: flutter_custom_license_page
 description: Customize your app's license page! flutter_custom_license_page gives you the license data, and the freedom to build your app's license page in your own style!
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/theswerd/flutter_custom_license_page
 environment:
   sdk: ">=2.8.0 <3.0.0"
