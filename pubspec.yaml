@@ -1,11 +1,9 @@
 name: flutter_custom_license_page
 description: Customize your app's license page
 version: 0.0.1
-author: Benjamin Swerdlow
-homepage: https://github.com/theswerd
-
+homepage: https://github.com/theswerd/flutter_custom_license_page
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
