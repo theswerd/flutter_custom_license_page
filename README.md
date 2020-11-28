@@ -8,7 +8,7 @@ This package allows you to **customize** the look at feel of your app's license 
 ### Slivers Example
 <img src="https://github.com/theswerd/flutter_custom_license_page/blob/main/screenshots/sliver_light_mode.png?raw=true" height="300px" alt="Sliver Light Mode"><img src="https://github.com/theswerd/flutter_custom_license_page/blob/main/screenshots/sliver_dark_mode.png?raw=true" height="300px" alt="Sliver Dark Mode">
 
-View all examples (here)[https://github.com/theswerd/flutter_custom_license_page]
+View all examples: <a href="https://github.com/theswerd/flutter_custom_license_page">here</a>
 
 
 ## API
@@ -21,8 +21,8 @@ CustomLicensePage((context, licenseData) {
 
 ## Notes
 
- * No Material Dependency
+ * No Material dependency
  * `CustomLicensePage` returns a **Widget**, you must push a route to it
  * Cupertino Example only works in Cupertino Apps
- * If you have any issues, or feature requests please let me know by creating an issue [here](https://github.com/theswerd/flutter_custom_license_page/issues/new)
+ * If you have any issues, or feature requests please let me know by creating an issue here: <a href="https://github.com/theswerd/flutter_custom_license_page/issues/new">here</a>
 
