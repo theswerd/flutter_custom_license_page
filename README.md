@@ -1,5 +1,5 @@
 # Flutter Custom License Page
-This package allows you to customize the look at feel of your app's license page.
+This package allows you to **customize** the look at feel of your app's license page. You are given the license data, and can build a license page that matches your app.
 
 ## Examples
 ### Cupertino Example
