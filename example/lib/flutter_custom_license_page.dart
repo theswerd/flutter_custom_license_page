@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// @dart = 2.8
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -17,9 +15,9 @@ import 'package:flutter/widgets.dart' hide Flow;
 /// [LicenseRegistry] API, which can be used to add more licenses to the list.
 class CustomLicensePage extends StatefulWidget {
   const CustomLicensePage(
-    this.builder, {
-    Key key,
-  }) : super(key: key);
+      this.builder, {
+        Key? key,
+      }) : super(key: key);
 
   final Widget Function(BuildContext, AsyncSnapshot<LicenseData>) builder;
 
@@ -28,22 +26,22 @@ class CustomLicensePage extends StatefulWidget {
 }
 
 class _CustomLicensePageState extends State<CustomLicensePage> {
-  final ValueNotifier<int> selectedId = ValueNotifier<int>(null);
+  final ValueNotifier<int?> selectedId = ValueNotifier<int?>(null);
 
   @override
   Widget build(BuildContext context) {
     return  FutureBuilder<LicenseData>(
-        future: licenses,
-        builder: widget.builder,
-      
+      future: licenses,
+      builder: widget.builder,
+
     );
   }
 
   final Future<LicenseData> licenses = LicenseRegistry.licenses
       .fold<LicenseData>(
-        LicenseData(),
+    LicenseData(),
         (LicenseData prev, LicenseEntry license) => prev..addLicense(license),
-      )
+  )
       .then((LicenseData licenseData) => licenseData..sortPackages());
 }
 
@@ -57,7 +55,7 @@ class LicenseData {
 
   // Special treatment for the first package since it should be the package
   // for delivered application.
-  String firstPackage;
+  String? firstPackage;
 
   void addLicense(LicenseEntry entry) {
     // Before the license can be added, we must first record the packages to
@@ -67,7 +65,7 @@ class LicenseData {
       // Bind this license to the package using the next index value. This
       // creates a contract that this license must be inserted at this same
       // index value.
-      packageLicenseBindings[package].add(licenses.length);
+      packageLicenseBindings[package]!.add(licenses.length);
     }
     licenses.add(entry); // Completion of the contract above.
   }
@@ -85,9 +83,9 @@ class LicenseData {
   /// Sort the packages using some comparison method, or by the default manner,
   /// which is to put the application package first, followed by every other
   /// package in case-insensitive alphabetical order.
-  void sortPackages([int compare(String a, String b)]) {
+  void sortPackages([int compare(String a, String b)?]) {
     packages.sort(compare ??
-        (String a, String b) {
+            (String a, String b) {
           // Based on how LicenseRegistry currently behaves, the first package
           // returned is the end user application license. This should be
           // presented first in the list. So here we make sure that first package

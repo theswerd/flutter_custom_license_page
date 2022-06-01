@@ -24,14 +24,13 @@ Widget body(
     AsyncSnapshot<LicenseData> licenseDataFuture, BuildContext context) {
   switch (licenseDataFuture.connectionState) {
     case ConnectionState.done:
-      LicenseData licenseData = licenseDataFuture.data;
+      LicenseData? licenseData = licenseDataFuture.data;
       return SliverGrid.count(
         crossAxisCount: 2,
         childAspectRatio: 3.5,
         children: [
-          ...licenseDataFuture.data.packages.map(
-            (currentPackage) => FlatButton(
-              padding: EdgeInsets.all(5),
+          ...licenseDataFuture.data!.packages.map(
+                (currentPackage) => TextButton(
                 child: Column(
                   children: [
                     Text(
@@ -41,16 +40,16 @@ Widget body(
                       ),
                     ),
                     Text(
-                      "${licenseData.packageLicenseBindings[currentPackage].length} Licenses",
+                      "${licenseData!.packageLicenseBindings[currentPackage]!.length} Licenses",
                       style: TextStyle(
-                        color: Theme.of(context).textTheme.subtitle2.color,
+                        color: Theme.of(context).textTheme.subtitle2!.color,
                       ),
                     ),
                   ],
                 ),
                 onPressed: () {
                   List<LicenseEntry> packageLicenses = licenseData
-                      .packageLicenseBindings[currentPackage]
+                      .packageLicenseBindings[currentPackage]!
                       .map((binding) => licenseData.licenses[binding])
                       .toList();
                   Navigator.of(context).push(
@@ -74,17 +73,17 @@ Widget body(
                                     packageLicenses
                                         .map(
                                           (e) => e.paragraphs
-                                              .map((e) => e.text)
-                                              .toList()
-                                              .reduce(
-                                                (value, element) =>
-                                                    value + "\n" + element,
-                                              ),
-                                        )
+                                          .map((e) => e.text)
+                                          .toList()
+                                          .reduce(
+                                            (value, element) =>
+                                        value + "\n" + element,
+                                      ),
+                                    )
                                         .reduce(
                                           (value, element) =>
-                                              value + "\n\n" + element,
-                                        ),
+                                      value + "\n\n" + element,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -95,7 +94,7 @@ Widget body(
                     ),
                   );
                 }),
-          )
+          ),
         ],
       );
 

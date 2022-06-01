@@ -16,17 +16,17 @@ Widget body(
     AsyncSnapshot<LicenseData> licenseDataFuture, BuildContext context) {
   switch (licenseDataFuture.connectionState) {
     case ConnectionState.done:
-      LicenseData licenseData = licenseDataFuture.data;
+      LicenseData? licenseData = licenseDataFuture.data;
       return ListView(
         children: [
-          ...licenseDataFuture.data.packages.map(
-            (currentPackage) => CupertinoButton(
+          ...licenseDataFuture.data!.packages.map(
+                (currentPackage) => CupertinoButton(
               child: Text(
                 currentPackage,
               ),
               onPressed: () {
-                List<LicenseEntry> packageLicenses = licenseData
-                    .packageLicenseBindings[currentPackage]
+                List<LicenseEntry> packageLicenses = licenseData!
+                    .packageLicenseBindings[currentPackage]!
                     .map((binding) => licenseData.licenses[binding]).toList();
                 Navigator.of(context).push(
                   CupertinoPageRoute(builder: (context) {
@@ -38,10 +38,10 @@ Widget body(
                       ),
                       child: ListView.builder(
                         itemCount: packageLicenses.length,
-                        itemBuilder: (context, index) {         
+                        itemBuilder: (context, index) {
                           return Padding(
                             padding: EdgeInsets.all(15),
-                            child: Text(                         
+                            child: Text(
                               packageLicenses[index].paragraphs.map((paragraph) => paragraph.text).join("\n"),
                             ),
                           );
