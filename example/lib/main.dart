@@ -1,5 +1,4 @@
 import 'package:example/sliver_example_1.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
